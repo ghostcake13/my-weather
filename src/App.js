@@ -1,10 +1,10 @@
 import "./App.css";
+import Weather from "./Weather.js";
 
 export default function App() {
   return (
     <div className="App">
-      Weather App
-      <button classname="btn-primary">Button</button>
+      <Weather />
     </div>
   );
 }
