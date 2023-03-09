@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
-import FormattedDate from "./FormattedDate";
+import WeatherInfo from "./WeatherInfo";
 import "./Weather.css";
 
 export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
+  const [city, setCity] = useState(props.defaultCity);
+
   function handleResponse(response) {
     setWeatherData({
       ready: true,
@@ -15,16 +17,31 @@ export default function Weather(props) {
       precipitation: 10,
       wind: response.data.wind.speed,
       humidity: response.data.main.humidity,
-      iconUrl: response.data.weather[0].icon,
+      iconUrl: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
     });
     console.log(response.data);
+  }
+
+  function search() {
+    const apiKey = "b4b83d40bb996cdee061104aca316784";
+
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleResponse);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    search(city);
+  }
+  function handleCityChange(event) {
+    setCity(event.target.value);
   }
 
   if (weatherData.ready) {
     return (
       <div className="Weather">
         {" "}
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="row">
             <div
               className="
@@ -35,6 +52,7 @@ export default function Weather(props) {
                 placeholder="Enter a city.."
                 className="form-control"
                 autoFocus="on"
+                onChange={handleCityChange}
               />
             </div>
             <div className="col-3">
@@ -47,46 +65,11 @@ export default function Weather(props) {
             </div>
           </div>
         </form>
-        <h1>{weatherData.city}</h1>
-        <ul>
-          {" "}
-          <li>
-            <FormattedDate date={weatherData.date} />
-          </li>
-          <li>{weatherData.description}</li>
-        </ul>
-        <div className="row mt-3">
-          <div className="col-6">
-            <div className="clearfix">
-              {
-                <img
-                  src={weatherData.iconUrl}
-                  alt="mostly cloudy"
-                  className="float-left"
-                />
-              }
-              <span className="temperature">
-                {Math.round(weatherData.temperature)}
-              </span>
-              <span className="unit">°C</span>
-            </div>
-          </div>
-          <div className="col-6">
-            <ul>
-              <li>Precipitation: {weatherData.precipitation}</li>
-              <li>Humidity: {weatherData.humidity}%</li>
-              <li>Wind: {weatherData.wind}km/h</li>
-            </ul>
-          </div>
-        </div>
+        <WeatherInfo data={weatherData} />
       </div>
     );
   } else {
-    const apiKey = "b4b83d40bb996cdee061104aca316784";
-
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.defaultCity}&appid=${apiKey}&units=metric`;
-    axios.get(apiUrl).then(handleResponse);
-
+    search();
     return "Loading...";
   }
 }
