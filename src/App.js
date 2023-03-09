@@ -7,7 +7,10 @@ export default function App() {
       <Weather defaultCity="Seattle" />
       <footer>
         {" "}
-        This project was coded by Miranda Severns and is open-sourced on Github
+        This project was coded by{" "}
+        <a href="https://mirandadev.netlify.app">Miranda Severns</a> and is
+        open-sourced on{" "}
+        <a href="https://github.com/ghostcake13/my-weather">GitHub</a>
       </footer>
     </div>
   );
