@@ -1,8 +1,13 @@
 body {
   margin: 0;
-  font-family: arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: "American Horror Story", sans-serif;
+  color: rgb(253, 247, 240);
+  text-shadow: 2px 3px 4px #000000;
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/7/7e/Francisco_de_Goya_y_Lucientes_-_Witches_Sabbath_-_Google_Art_Project.jpg");
+  background-size: cover;
+  background-position-y: 20%;
 }
 
 code {
