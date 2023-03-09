@@ -1,16 +1,47 @@
-body {
-  margin: 0;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-family: "American Horror Story", sans-serif;
-  color: rgb(253, 247, 240);
-  text-shadow: 2px 3px 4px #000000;
-  background-image: url("https://upload.wikimedia.org/wikipedia/commons/7/7e/Francisco_de_Goya_y_Lucientes_-_Witches_Sabbath_-_Google_Art_Project.jpg");
-  background-size: cover;
-  background-position-y: 20%;
+.Weather,
+.WeatherInfo {
+  margin: 30px auto;
+  padding: 20px;
+  border-style: none;
+  border: none;
+  border-radius: 5px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+.btn {
+  background-color: black;
+  font-size: 18px;
+  text-align: center;
+  margin: auto;
+  border-style: none;
+}
+
+h1 {
+  font-size: 28px;
+  font-weight: 100;
+  line-height: 28px;
+  margin-bottom: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-transform: capitalize;
+  font-size: 20px;
+  font-weight: 100;
+  line-height: 19px;
+}
+
+@media (max-width: 900px) {
+  .hero h1 {
+    font-size: 44px;
+  }
+  .btn {
+    font-size: 12px;
+  }
 }
