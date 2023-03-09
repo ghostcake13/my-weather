@@ -1,24 +1,28 @@
 .App {
+}
+.App,
+.Weather,
+.WeatherInfo {
+  max-width: 85%;
   margin: 30px auto;
+  font-family: "American Horror Story", sans-serif;
+}
+
+.Weather {
   background: rgb(135, 135, 135, 0.4);
+}
+.Weather,
+.WeatherInfo {
+  margin: 30px auto;
+
   padding: 20px;
   border-style: none;
   border: none;
   border-radius: 5px;
   color: rgb(253, 247, 240);
 }
-.App,
-.Weather,
-.WeatherInfo {
-  max-width: 600px;
-  margin: 30px auto;
-  font-family: "American Horror Story", sans-serif;
-}
-
-.Weather,
-.WeatherInfo {
-  border: none;
-  border-radius: 5px;
+.temperature {
+  font-size: 64px;
 }
 .App footer {
   font-size: 11px;
